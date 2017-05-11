@@ -30,7 +30,11 @@ new Vuew({
                 </div>`,
       components: {
         'check-filter': {
-            template: `<div class='check-filter'>
+            template: `<div 
+                          class='check-filter' 
+                          @click='checked = !checked' 
+                          :class='{ "check-filter": true, active: checked}'
+                        >
                         <span class='checkbox'></span>
                         <span class='check-filter-title'>
                           {{ title }}
@@ -39,6 +43,11 @@ new Vuew({
             props: [
               'title',
             ],
+            data() {
+              return {
+                checked: false,
+              }
+            },
         },
       },
       data() {
