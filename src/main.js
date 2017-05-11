@@ -25,14 +25,23 @@ new Vuew({
       template: `<div id='movie-filter'>
                     <h2>Filter results</h2>
                     <div class='filter-group'>
-                      <check-filter v-for='genre in genres' :title='genre'></check-filter>
+                      <check-filter 
+                        v-for='genre in genres' 
+                        :title='genre'
+                        @check-filter='checkFilter'
+                      ></check-filter>
                     </div>
                 </div>`,
+      methods: {
+        checkFilter() {
+          console.log('check-filter');
+        },
+      },
       components: {
         'check-filter': {
             template: `<div 
                           class='check-filter' 
-                          @click='checked = !checked' 
+                          @click='checkFilter' 
                           :class='{ "check-filter": true, active: checked}'
                         >
                         <span class='checkbox'></span>
@@ -48,6 +57,12 @@ new Vuew({
                 checked: false,
               }
             },
+            methods: {
+              checkFilter() {
+                this.checked = !this.checked;
+                this.$emit('check-filter');
+              },
+            }
         },
       },
       data() {
