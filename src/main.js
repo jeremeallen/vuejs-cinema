@@ -1,5 +1,6 @@
 import Vuew from 'vue';
 import './style.scss';
+import genres from './util/genres';
 
 new Vuew({
   el: '#app',
@@ -23,7 +24,20 @@ new Vuew({
     'movie-filter': {
       template: `<div id='movie-filter'>
                     <h2>Filter results</h2>
+                    <div class='filter-group'>
+                      <check-filter v-for='genre in genres'></check-filter>
+                    </div>
                 </div>`,
+      components: {
+        'check-filter': {
+            template: `<div>Filter</div>`,
+        },
+      },
+      data() {
+        return {
+          genres,
+        };
+      },
     },
   },
 });
