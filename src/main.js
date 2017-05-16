@@ -39,6 +39,10 @@ new Vuew({
           ],
         };
       },
+      props: [
+        'genre',
+        'times',
+      ],
     },
     'movie-filter': {
       template: `<div id='movie-filter'>
