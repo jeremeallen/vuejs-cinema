@@ -35,6 +35,8 @@ new Vue({
   },
 
   created() {
-     console.log(this.$http);
+     this.$http.get('/api').then(response => {
+       console.log(response);
+     });
   }
 });
