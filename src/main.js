@@ -1,10 +1,14 @@
-import Vuew from 'vue';
+import Vue from 'vue';
 import './style.scss';
 
 import MovieFilter from './components/MovieFilter.vue';
 import MovieList from './components/MovieList.vue';
 
-new Vuew({
+import VueResource from 'vue-resource';
+
+Vue.use(VueResource);
+
+new Vue({
   el: '#app',
   data() {
     return {
@@ -29,4 +33,8 @@ new Vuew({
     MovieList,
     MovieFilter,
   },
+
+  created() {
+     console.log(this.$http);
+  }
 });
